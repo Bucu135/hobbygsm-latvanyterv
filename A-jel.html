@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HobbyGSM — A irány: Jel</title>
+<link rel="icon" href="favicon.png">
+<meta property="og:image" content="https://bucu135.github.io/hobbygsm-latvanyterv/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{
+  --bg:#050B16; --bg2:#0A1628; --panel:#0D1B30; --line:rgba(130,190,255,.13);
+  --cyan:#2BB8F2; --blue:#0C6FAD; --orange:#F5991F; --orange2:#FFB54D;
+  --text:#EAF2FB; --muted:#93A8C0;
+  --r:18px;
+  --display:'Unbounded',sans-serif; --body:'Manrope',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1280px,100% - 48px);margin-inline:auto}
+
+/* ---------- futószalag ---------- */
+.ticker{background:var(--orange);color:#0A1628;font-weight:700;font-size:14px;letter-spacing:.02em;overflow:hidden;white-space:nowrap}
+.ticker__track{display:inline-flex;gap:48px;padding:9px 0;animation:szalag 28s linear infinite}
+.ticker__track span::after{content:"✦";margin-left:48px;opacity:.55}
+@keyframes szalag{to{transform:translateX(-50%)}}
+
+/* ---------- fejléc ---------- */
+.hdr{position:sticky;top:0;z-index:50;transition:background .35s,border-color .35s}
+.hdr.is-scrolled{background:rgba(5,11,22,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.hdr__in{display:flex;align-items:center;gap:36px;height:76px}
+.logo{background:#fff;border-radius:14px;padding:4px 10px;display:flex}
+.logo img{height:42px;width:auto}
+.nav{display:flex;gap:28px;font-weight:600;font-size:15px}
+.nav a{position:relative;color:var(--muted);transition:color .2s}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav a:hover{color:var(--text)} .nav a:hover::after{transform:scaleX(1)}
+.hdr__r{margin-left:auto;display:flex;align-items:center;gap:22px}
+.lang{display:flex;gap:8px;font-weight:700;font-size:13px;color:var(--muted)}
+.lang b{color:var(--cyan);border-bottom:2px solid var(--orange)}
+.ico{width:22px;height:22px;stroke:var(--text);fill:none;stroke-width:1.8}
+.cart{position:relative}
+.cart i{position:absolute;top:-7px;right:-9px;background:var(--orange);color:#0A1628;font:700 11px/18px var(--body);width:18px;height:18px;border-radius:50%;text-align:center;font-style:normal}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:72px 0 110px;isolation:isolate}
+.hero::before{ /* fényfoltok */
+  content:"";position:absolute;inset:-20% -10% auto auto;width:900px;height:900px;z-index:-2;
+  background:radial-gradient(closest-side,rgba(43,184,242,.32),transparent 70%);
+}
+.hero::after{ /* finom rács */
+  content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 70% 40%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse 70% 60% at 70% 40%,#000 20%,transparent 75%);
+}
+.hero__in{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);border:1px solid var(--line);border-radius:99px;padding:7px 14px 7px 10px;background:rgba(13,27,48,.6)}
+.kicker .dot{width:8px;height:8px;border-radius:50%;background:#3BE08C;box-shadow:0 0 0 0 rgba(59,224,140,.6);animation:pulzus 2s infinite}
+@keyframes pulzus{70%{box-shadow:0 0 0 10px rgba(59,224,140,0)}100%{box-shadow:0 0 0 0 rgba(59,224,140,0)}}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(38px,4.6vw,68px);line-height:1.14;letter-spacing:-.02em;margin:26px 0 24px}
+h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}
+h1 .w>span{display:inline-block;transform:translateY(105%);animation:felbukkan .9s cubic-bezier(.2,.8,.2,1) forwards}
+h1 em{font-style:normal;background:linear-gradient(92deg,var(--cyan),#7FD6FF 40%,var(--orange) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes felbukkan{to{transform:none}}
+.lead{color:var(--muted);font-size:19px;max-width:30em;opacity:0;animation:be .8s .9s forwards}
+@keyframes be{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.cta{display:flex;gap:14px;margin-top:36px;opacity:0;animation:be .8s 1.1s forwards;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;border-radius:14px;padding:17px 26px;transition:transform .25s,box-shadow .25s,background .25s}
+.btn--o{background:var(--orange);color:#0A1628;box-shadow:0 10px 30px -10px rgba(245,153,31,.7)}
+.btn--o:hover{transform:translateY(-2px);box-shadow:0 16px 40px -10px rgba(245,153,31,.85)}
+.btn--o svg{transition:transform .25s} .btn--o:hover svg{transform:translateX(4px)}
+.btn--g{border:1px solid var(--line);color:var(--text);background:rgba(13,27,48,.5)}
+.btn--g:hover{border-color:var(--cyan);background:rgba(43,184,242,.08)}
+
+/* telefon + jelhullámok */
+.stage{position:relative;height:560px;display:grid;place-items:center}
+.ring{position:absolute;width:260px;height:260px;border-radius:50%;border:1.5px solid var(--cyan);opacity:0;animation:hullam 4.8s cubic-bezier(.2,.6,.3,1) infinite}
+.ring:nth-child(2){animation-delay:1.2s}.ring:nth-child(3){animation-delay:2.4s}.ring:nth-child(4){animation-delay:3.6s}
+@keyframes hullam{0%{transform:scale(.6);opacity:.0}10%{opacity:.7}100%{transform:scale(2.3);opacity:0}}
+.phone{position:relative;width:220px;height:440px;border-radius:40px;background:linear-gradient(160deg,#16294a,#0a1426);border:2px solid rgba(160,210,255,.28);box-shadow:0 40px 80px -20px rgba(0,0,0,.8),inset 0 0 0 7px #08101f;animation:lebeg 6s ease-in-out infinite;overflow:hidden}
+.phone::before{content:"";position:absolute;top:14px;left:50%;width:74px;height:22px;margin-left:-37px;border-radius:12px;background:#000}
+.phone__scr{position:absolute;inset:48px 18px 22px;display:flex;flex-direction:column;gap:10px}
+.bar{height:10px;border-radius:6px;background:rgba(160,210,255,.16)}
+.bar--o{background:var(--orange);height:40px;border-radius:12px;margin-top:auto}
+.batt{font-family:var(--display);font-weight:800;font-size:50px;line-height:1;color:var(--text);margin-top:26px}
+.batt small{font-size:18px;color:var(--muted)}
+.battbar{height:14px;border-radius:8px;background:rgba(160,210,255,.12);overflow:hidden}
+.battbar i{display:block;height:100%;width:30%;background:linear-gradient(90deg,var(--cyan),#3BE08C);border-radius:8px;animation:tolt 4s ease-in-out infinite}
+@keyframes tolt{0%{width:22%}70%,100%{width:100%}}
+@keyframes lebeg{50%{transform:translateY(-14px) rotate(-1.5deg)}}
+/* körpályán keringő termékek */
+.orbit{position:absolute;inset:0;animation:kering 36s linear infinite}
+.chip{position:absolute;width:118px;height:118px;border-radius:24px;background:#fff;padding:12px;box-shadow:0 20px 40px -14px rgba(0,0,0,.7);animation:kering 36s linear infinite reverse}
+.chip img{width:100%;height:100%;object-fit:contain}
+.chip:nth-child(1){top:4%;left:12%}.chip:nth-child(2){top:12%;right:4%}.chip:nth-child(3){bottom:8%;left:2%}.chip:nth-child(4){bottom:2%;right:14%}
+@keyframes kering{to{transform:rotate(360deg)}}
+
+/* ---------- márka-szalag ---------- */
+.brands{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:26px 0}
+.brands__track{display:inline-flex;gap:70px;animation:szalag 40s linear infinite}
+.brands span{font-family:var(--display);font-weight:800;font-size:44px;letter-spacing:-.01em;color:transparent;-webkit-text-stroke:1px rgba(160,210,255,.35);transition:color .3s}
+.brands span:hover{color:var(--text)}
+
+/* ---------- szekciók ---------- */
+section{padding:110px 0}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:44px}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(30px,3.6vw,50px);line-height:1.16;letter-spacing:-.015em}
+h2 span{color:var(--cyan)}
+.more{color:var(--muted);font-weight:600;display:inline-flex;gap:8px;align-items:center;white-space:nowrap}
+.more:hover{color:var(--orange)}
+
+/* termékkártyák */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.card{position:relative;border-radius:var(--r);padding:1.5px;background:var(--line);isolation:isolate;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.card::before{ /* forgó fénykeret hoverkor */
+  content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;transition:opacity .35s;
+  background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--cyan) 75%,var(--orange) 88%,transparent 100%);
+  animation:forog 3s linear infinite;
+}
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes forog{to{--a:360deg}}
+.card:hover{transform:translateY(-6px)} .card:hover::before{opacity:1}
+.card__in{background:var(--panel);border-radius:calc(var(--r) - 1.5px);height:100%;display:flex;flex-direction:column;overflow:hidden}
+.card__img{position:relative;aspect-ratio:1;background:#fff;margin:10px;border-radius:12px;overflow:hidden}
+.card__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:14px;transition:opacity .45s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.card__img img+img{opacity:0;transform:scale(1.06)}
+.card:hover .card__img img:first-child{opacity:0;transform:scale(.96)}
+.card:hover .card__img img+img{opacity:1;transform:none}
+.badge{position:absolute;top:10px;left:10px;z-index:2;background:var(--orange);color:#0A1628;font-weight:800;font-size:12px;padding:5px 9px;border-radius:8px}
+.card__b{padding:6px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.vendor{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.title{font-weight:600;font-size:15.5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.price{margin-top:auto;display:flex;align-items:baseline;gap:10px;font-variant-numeric:tabular-nums}
+.price b{font-family:var(--display);font-weight:700;font-size:20px}
+.price s{color:var(--muted);font-size:14px}
+.add{position:absolute;right:16px;bottom:16px;width:42px;height:42px;border-radius:12px;background:var(--orange);display:grid;place-items:center;transform:translateY(8px) scale(.8);opacity:0;transition:.3s cubic-bezier(.2,.8,.2,1)}
+.add svg{stroke:#0A1628}
+.card:hover .add{transform:none;opacity:1}
+
+/* kategóriák — bento */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:18px}
+.cat{position:relative;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(160deg,var(--panel),var(--bg2));overflow:hidden;padding:24px;display:flex;flex-direction:column;justify-content:space-between;transition:border-color .3s,transform .35s}
+.cat:nth-child(1){grid-column:span 2;grid-row:span 2}
+.cat:nth-child(4){grid-column:span 2}
+.cat::after{content:"";position:absolute;inset:auto -30% -60% auto;width:70%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(43,184,242,.35),transparent);transition:transform .6s;transform:scale(.6)}
+.cat:hover{border-color:rgba(43,184,242,.5);transform:translateY(-4px)} .cat:hover::after{transform:scale(1.3)}
+.cat h3{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.2;position:relative;z-index:1}
+.cat:nth-child(1) h3{font-size:34px}
+.cat .n{font-size:14px;color:var(--muted);font-weight:600;position:relative;z-index:1}
+.cat img{position:absolute;right:14px;bottom:14px;width:auto;height:62%;aspect-ratio:1;object-fit:contain;border-radius:14px;background:#fff;padding:10px;transition:transform .5s cubic-bezier(.2,.8,.2,1);z-index:1}
+.cat:nth-child(1) img{height:58%}
+.cat:hover img{transform:rotate(-4deg) scale(1.06)}
+.cat .arr{position:absolute;top:22px;right:22px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:.3s;z-index:1}
+.cat:hover .arr{background:var(--orange);border-color:var(--orange);transform:rotate(-45deg)}
+.cat:hover .arr svg{stroke:#0A1628}
+
+/* előnyök */
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.perk{border:1px solid var(--line);border-radius:var(--r);padding:34px;background:var(--bg2)}
+.perk svg{width:46px;height:46px;stroke:var(--orange);fill:none;stroke-width:1.6;margin-bottom:22px}
+.perk h3{font-family:var(--display);font-weight:700;font-size:21px;margin-bottom:8px}
+.perk p{color:var(--muted)}
+.perk:nth-child(1) svg .kerek{animation:gurul 1.2s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes gurul{to{transform:rotate(360deg)}}
+
+/* lábléc */
+footer{border-top:1px solid var(--line);padding:60px 0 40px;color:var(--muted);font-size:15px}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.ft h4{color:var(--text);font-family:var(--display);font-size:15px;margin-bottom:14px}
+.ft li{list-style:none;margin-bottom:8px}
+
+/* görgetésre megjelenés — két irányba */
+.rv{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.rv.shown{opacity:1;transform:none}
+
+@media (max-width:960px){
+  .hero__in{grid-template-columns:1fr}
+  .stage{height:420px;order:-1}
+  .grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .cats{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  .cat:nth-child(1){grid-column:span 2;grid-row:span 1}
+  .perks{grid-template-columns:1fr}
+  .nav{display:none}
+  .ft{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .wrap{width:calc(100% - 32px)}
+  .hero{padding:30px 0 70px}
+  .stage{height:340px;transform:scale(.78)}
+  .chip{width:96px;height:96px}
+  section{padding:76px 0}
+  .card__b{padding:4px 12px 14px}
+  .title{font-size:14px}
+  .add{opacity:1;transform:none;width:36px;height:36px;right:10px;bottom:10px}
+  .lang{display:none}
+  .price{flex-wrap:wrap;gap:2px 8px;padding-right:0}
+  .price b{font-size:17px}
+  .add{top:18px;right:18px;bottom:auto;z-index:3}
+  .cat{padding:16px}
+  .cats{grid-template-columns:1fr;grid-auto-rows:120px}
+  .cat:nth-child(1),.cat:nth-child(4){grid-column:auto;grid-row:auto}
+  .cat h3,.cat:nth-child(1) h3{font-size:19px;max-width:60%}
+  .cat .arr{top:12px;right:12px;width:30px;height:30px}
+  .cat img,.cat:nth-child(1) img{height:76%;right:52px;bottom:auto;top:12%}
+  .sh{flex-direction:column;align-items:start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  h1 .w>span,.lead,.cta{transform:none;opacity:1}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true"><div class="ticker__track" id="ticker"></div></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap hdr__in">
+    <a class="logo" href="#"><img src="logo.png" alt="HobbyGSM"></a>
+    <nav class="nav"><a href="#">Kezdőlap</a><a href="#kat">Kategóriák</a><a href="#">Akciók</a><a href="#">Kapcsolat</a></nav>
+    <div class="hdr__r">
+      <div class="lang"><span>RO</span><span>|</span><b>HU</b></div>
+      <svg class="ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+      <a class="cart" href="#"><svg class="ico" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><i>2</i></a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero__in">
+    <div>
+      <span class="kicker"><span class="dot"></span>Raktáron · 2–4 nap alatt nálad</span>
+      <h1 id="h1">Minden, amire a <em>telefonodnak</em> szüksége van</h1>
+      <p class="lead">Töltők, kábelek, tokok, fülesek és autós tartók megbízható márkáktól. Utánvéttel fizetsz, 200 lej felett a szállítás ingyenes.</p>
+      <div class="cta">
+        <a class="btn btn--o" href="#termekek">Vásárlás most <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        <a class="btn btn--g" href="#kat">Kategóriák</a>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+      <div class="orbit" id="orbit"></div>
+      <div class="phone"><div class="phone__scr">
+        <div class="bar" style="width:40%"></div>
+        <div class="batt">100<small>%</small></div>
+        <div class="battbar"><i></i></div>
+        <div class="bar" style="width:80%;margin-top:14px"></div><div class="bar" style="width:60%"></div>
+        <div class="bar bar--o"></div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="brands" aria-hidden="true"><div class="brands__track" id="brands"></div></div>
+
+<section id="termekek">
+  <div class="wrap">
+    <div class="sh rv"><h2>Népszerű <span>most</span></h2><a class="more" href="#">Az összes termék →</a></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="kat" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sh rv"><h2>Vásárolj <span>kategóriák</span> szerint</h2></div>
+    <div class="cats" id="cats"></div>
+  </div>
+</section>
+
+<section style="padding-top:20px">
+  <div class="wrap perks">
+    <div class="perk rv"><svg viewBox="0 0 48 48"><path d="M4 12h24v20H4zM28 20h9l7 7v5h-16z"/><circle class="kerek" cx="13" cy="35" r="4"/><circle class="kerek" cx="36" cy="35" r="4"/></svg><h3>Gyors szállítás</h3><p>FAN Courierrel az egész országba, 2–4 munkanap alatt.</p></div>
+    <div class="perk rv" style="--d:.1s"><svg viewBox="0 0 48 48"><rect x="5" y="12" width="38" height="24" rx="4"/><circle cx="24" cy="24" r="5"/><path d="M11 18v12M37 18v12"/></svg><h3>Utánvét</h3><p>A csomag átvételekor fizetsz, készpénzzel vagy kártyával.</p></div>
+    <div class="perk rv" style="--d:.2s"><svg viewBox="0 0 48 48"><path d="M10 20a15 15 0 1 1 1 13"/><path d="M10 10v10h10"/></svg><h3>14 napos visszaküldés</h3><p>Nem vált be? Két héten belül visszaküldheted.</p></div>
+  </div>
+</section>
+
+<footer><div class="wrap ft">
+  <div><a class="logo" href="#" style="display:inline-flex;margin-bottom:16px"><img src="logo.png" alt="HobbyGSM"></a><p>Telefonos tartozékok webáruháza.<br>Conform legislației în vigoare: ANPC · SAL · SOL</p></div>
+  <div><h4>Vásárlás</h4><ul><li>Összes termék</li><li>Akciók</li><li>Kategóriák</li></ul></div>
+  <div><h4>Információ</h4><ul><li>Szállítás</li><li>Visszaküldés</li><li>ÁSZF</li><li>Kapcsolat</li></ul></div>
+</div></footer>
+
+<script src="adat.js"></script>
+<script>
+const T = HG.termekek, ft = n => n.toFixed(2).replace('.', ',') + ' lej';
+const img = (u, w) => u ? u + (u.includes('?') ? '&' : '?') + 'width=' + w : '';
+
+// futószalag + márkák (duplázva a végtelen hurokhoz)
+const tick = ['Ingyenes szállítás 200 lej felett', 'Fizetés utánvéttel', 'FAN Courier 2–4 nap', '14 napos visszaküldés'];
+document.getElementById('ticker').innerHTML = [...tick, ...tick, ...tick, ...tick].map(s => `<span>${s}</span>`).join('');
+const br = [...new Set(T.map(t => t.vendor))];
+document.getElementById('brands').innerHTML = [...br, ...br].map(s => `<span>${s}</span>`).join('');
+
+// hero címe: szavanként felbukkanó animáció
+const h = document.getElementById('h1');
+let i = 0;
+h.innerHTML = h.innerHTML.replace(/<em>(.*?)<\/em>|([^\s<]+)/g, (m, em, w) => {
+  const d = (0.15 + i++ * 0.08).toFixed(2);
+  const inner = em ? `<em>${em}</em>` : w;
+  return `<span class="w"><span style="animation-delay:${d}s">${inner}</span></span>`;
+});
+
+// keringő termékek
+const kiemelt = T.filter(t => t.img).slice(0, 12);
+document.getElementById('orbit').innerHTML = [2, 6, 9, 4].map(k => `<div class="chip"><img src="${img(kiemelt[k].img, 240)}" alt=""></div>`).join('');
+
+// termékrács
+const arr = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>';
+document.getElementById('grid').innerHTML = T.slice(0, 8).map((t, k) => `
+  <a class="card rv" style="--d:${(k % 4) * 0.08}s" href="#"><div class="card__in">
+    <div class="card__img">${t.o ? `<span class="badge">−${Math.round((1 - t.p / t.o) * 100)}%</span>` : ''}
+      <img src="${img(t.img, 500)}" alt="${t.t}" loading="lazy">${t.img2 ? `<img src="${img(t.img2, 500)}" alt="" loading="lazy">` : ''}</div>
+    <div class="card__b"><span class="vendor">${t.vendor}</span><span class="title">${t.t}</span>
+      <span class="price"><b>${ft(t.p)}</b>${t.o ? `<s>${ft(t.o)}</s>` : ''}</span></div>
+    <span class="add">${arr}</span></div></a>`).join('');
+
+// kategóriák a terméktípusokból
+const kat = {};
+T.forEach(t => { (kat[t.type] = kat[t.type] || []).push(t); });
+const sorrend = Object.entries(kat).sort((a, b) => b[1].length - a[1].length);
+sorrend.push(['Alkatrészek / szerviz', []]);
+const nyil = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+document.getElementById('cats').innerHTML = sorrend.map(([n, l], k) => `
+  <a class="cat rv" style="--d:${k * 0.06}s" href="#"><span class="arr">${nyil}</span>
+    <div><h3>${n}</h3><span class="n">${l.length ? l.length + ' termék' : 'Javítás, cserealkatrész'}</span></div>
+    ${l[0] && l[0].img ? `<img src="${img(l[0].img, 400)}" alt="" loading="lazy">` : ''}</a>`).join('');
+
+// fejléc görgetésre
+const hdr = document.getElementById('hdr');
+addEventListener('scroll', () => hdr.classList.toggle('is-scrolled', scrollY > 30), { passive: true });
+
+// megjelenés görgetésre, két irányba
+const io = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('shown', e.isIntersecting)), { threshold: .12 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
+<a href="./" style="position:fixed;left:16px;bottom:16px;z-index:999;transform:translate3d(0,0,0);background:#0B1B2B;color:#fff;font:600 14px/1 system-ui,sans-serif;padding:12px 16px;border-radius:99px;box-shadow:0 8px 24px -8px rgba(0,0,0,.5);text-decoration:none">← A irány · vissza a választóhoz</a>
+</body>
+</html>

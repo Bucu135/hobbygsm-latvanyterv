@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HobbyGSM — három dizájnirány</title>
+<meta name="description" content="Válaszd ki, melyik irányban alakuljon tovább a HobbyGSM webshop kinézete.">
+<meta property="og:title" content="HobbyGSM — három dizájnirány">
+<meta property="og:description" content="Válaszd ki, melyik irányban alakuljon tovább a webshop kinézete.">
+<meta property="og:image" content="https://bucu135.github.io/hobbygsm-latvanyterv/og.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap&subset=latin-ext" rel="stylesheet">
+<style>
+:root{--ink:#0B1B2B;--ink2:#55667A;--bg:#F3F5F8;--line:#DCE3EA;--blue:#0C6FAD;--orange:#F5991F}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Manrope',sans-serif;font-size:17px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1200px,100% - 32px);margin-inline:auto}
+header{padding:48px 0 30px;display:flex;align-items:center;gap:18px}
+header img{height:56px;width:auto}
+h1{font-size:clamp(34px,5vw,58px);font-weight:800;line-height:1.14;letter-spacing:-.02em;margin-bottom:14px}
+.intro{color:var(--ink2);max-width:40em;margin-bottom:46px}
+.lista{display:grid;gap:30px;padding-bottom:70px}
+.irany{display:grid;grid-template-columns:1.6fr 1fr;gap:0;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.irany:hover{transform:translateY(-3px);box-shadow:0 24px 50px -28px rgba(11,27,43,.45)}
+.kepek{position:relative;background:#E6EBF1;padding:22px 22px 0;display:flex;align-items:end;gap:16px;min-height:300px}
+.kepek .d{flex:1;border-radius:12px 12px 0 0;box-shadow:0 10px 30px -14px rgba(0,0,0,.4);display:block;width:72%}
+.kepek .m{width:22%;border-radius:14px 14px 0 0;box-shadow:0 10px 30px -14px rgba(0,0,0,.4);display:block}
+.szoveg{padding:30px 30px 32px;display:flex;flex-direction:column}
+.betu{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--ink);color:#fff;font-weight:800;font-size:22px;margin-bottom:16px}
+h2{font-size:28px;font-weight:800;line-height:1.14;margin-bottom:10px}
+.szoveg p{color:var(--ink2);margin-bottom:10px}
+.szoveg ul{color:var(--ink2);padding-left:20px;margin-bottom:22px}
+.szoveg li{margin-bottom:4px}
+.gomb{margin-top:auto;align-self:start;background:var(--orange);color:var(--ink);font-weight:800;padding:14px 22px;border-radius:12px;display:inline-flex;gap:10px}
+.irany:hover .gomb{background:#FFAE45}
+.megj{border-top:1px solid var(--line);padding:30px 0 50px;color:var(--ink2);font-size:15px}
+@media (max-width:820px){
+  .irany{grid-template-columns:1fr}
+  .kepek{min-height:0;padding:16px 16px 0}
+  .szoveg{padding:22px 20px 24px}
+  header{padding-top:28px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><img src="logo.png" alt="HobbyGSM"></header>
+  <h1>Három irány a webshop új kinézetéhez</h1>
+  <p class="intro">Mindhárom a bolt főoldalát mutatja, a saját termékeitekkel és áraitokkal. Kattints rá, görgess végig rajtuk (telefonon is érdemes), és írd meg, melyik tetszik a legjobban. Az irányok keverhetők is, például az egyik színei a másik elrendezésével.</p>
+
+  <div class="lista">
+    <a class="irany" href="A-jel.html">
+      <div class="kepek"><img class="d" src="kep-A-jel-desktop.jpg" alt="A irány számítógépen"><img class="m" src="kep-A-jel-mobil.jpg" alt="A irány telefonon"></div>
+      <div class="szoveg"><span class="betu">A</span><h2>Jel</h2>
+        <p>Sötét, modern, technológiás hangulat.</p>
+        <ul><li>A logó jelhullámai élő animációként lüktetnek</li><li>A telefon körül termékek keringenek</li><li>Egérrel rámutatva fénylő keret és második termékfotó</li></ul>
+        <span class="gomb">Megnézem →</span></div>
+    </a>
+    <a class="irany" href="B-matrica.html">
+      <div class="kepek"><img class="d" src="kep-B-matrica-desktop.jpg" alt="B irány számítógépen"><img class="m" src="kep-B-matrica-mobil.jpg" alt="B irány telefonon"></div>
+      <div class="szoveg"><span class="betu">B</span><h2>Matrica</h2>
+        <p>Világos, játékos, merész — a logó színeiből.</p>
+        <ul><li>Vastag keretes kártyák, matrica-árcímkék</li><li>Ferde reklámszalagok futnak keresztben</li><li>Színes kategória-csempék</li></ul>
+        <span class="gomb">Megnézem →</span></div>
+    </a>
+    <a class="irany" href="C-vitrin.html">
+      <div class="kepek"><img class="d" src="kep-C-vitrin-desktop.jpg" alt="C irány számítógépen"><img class="m" src="kep-C-vitrin-mobil.jpg" alt="C irány telefonon"></div>
+      <div class="szoveg"><span class="betu">C</span><h2>Vitrin</h2>
+        <p>Letisztult, prémium hatású.</p>
+        <ul><li>A termékek maguktól váltakoznak egy vitrinben</li><li>Vízszintesen görgethető terméksáv</li><li>Nagy betűs kategórialista</li></ul>
+        <span class="gomb">Megnézem →</span></div>
+    </a>
+  </div>
+
+  <p class="megj">Ezek látványtervek: a gombok itt még nem működnek. A választott irány a meglévő webshopra kerül rá, a kosár, a fizetés és a rendelések ugyanúgy maradnak.</p>
+</div>
+</body>
+</html>
